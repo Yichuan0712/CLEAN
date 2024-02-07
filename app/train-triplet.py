@@ -5,7 +5,7 @@ import pickle
 from src.CLEAN.dataloader import *
 from src.CLEAN.model import *
 from src.CLEAN.utils import *
-import src.torch.nn as nn
+import torch.nn as nn
 import argparse
 from src.CLEAN.distance_map import get_dist_map
 
