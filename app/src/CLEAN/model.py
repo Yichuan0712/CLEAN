@@ -10,7 +10,7 @@ class VanillaNet(nn.Module):
         self.device = device
         self.dtype = dtype
 
-        self.fc1 = nn.Linear(1280, hidden_dim, dtype=dtype, device=device)
+        self.fc1 = nn.Linear(320, hidden_dim, dtype=dtype, device=device)
         self.fc2 = nn.Linear(hidden_dim, out_dim, dtype=dtype, device=device)
 
     def forward(self, x):
@@ -28,7 +28,7 @@ class LayerNormNet(nn.Module):
         self.device = device
         self.dtype = dtype
 
-        self.fc1 = nn.Linear(1280, hidden_dim, dtype=dtype, device=device)
+        self.fc1 = nn.Linear(320, hidden_dim, dtype=dtype, device=device)
         self.ln1 = nn.LayerNorm(hidden_dim, dtype=dtype, device=device)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim,
                              dtype=dtype, device=device)
@@ -55,7 +55,7 @@ class BatchNormNet(nn.Module):
         self.device = device
         self.dtype = dtype
 
-        self.fc1 = nn.Linear(1280, hidden_dim, dtype=dtype, device=device)
+        self.fc1 = nn.Linear(320, hidden_dim, dtype=dtype, device=device)
         self.bn1 = nn.BatchNorm1d(hidden_dim, dtype=dtype, device=device)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim,
                              dtype=dtype, device=device)
@@ -81,7 +81,7 @@ class InstanceNorm(nn.Module):
         self.device = device
         self.dtype = dtype
 
-        self.fc1 = nn.Linear(1280, hidden_dim, dtype=dtype, device=device)
+        self.fc1 = nn.Linear(320, hidden_dim, dtype=dtype, device=device)
         self.in1 = nn.InstanceNorm1d(hidden_dim, dtype=dtype, device=device)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim,
                              dtype=dtype, device=device)
