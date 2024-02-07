@@ -56,7 +56,7 @@ def get_ec_id_dict_non_prom(csv_name: str) -> dict:
 
 def format_esm(a):
     if type(a) == dict:
-        a = a['mean_representations'][33]
+        a = a['mean_representations'][6]
     return a
 
 
@@ -117,7 +117,7 @@ def ensure_dirs(path):
 def retrive_esm1b_embedding(fasta_name):
     esm_script = "esm/scripts/extract.py"
     esm_out = "data/esm_data"
-    esm_type = "esm1b_t33_650M_UR50S"
+    esm_type = "esm2_t6_8M_UR50D"  # "esm1b_t33_650M_UR50S"
     fasta_name = "data/" + fasta_name + ".fasta"
     command = ["python", esm_script, esm_type, 
               fasta_name, esm_out, "--include", "mean"]
