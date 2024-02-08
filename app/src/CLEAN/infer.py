@@ -62,12 +62,19 @@ def infer_pvalue_triplet(train_data, test_data, p_value = 1e-5, nk_random = 20,
         true_label, all_label = get_true_labels('./data/' + test_data)
         pre, rec, f1, roc, acc = get_eval_metrics(
             pred_label, pred_probs, true_label, all_label)
+        _pre, _rec, _f1, _roc, _acc = get_eval_metrics_not_weighted(
+            pred_label, pred_probs, true_label, all_label)
         print(f'############ EC calling results using random '
         f'chosen {nk_random}k samples ############')
         print('-' * 75)
         print(f'>>> total samples: {len(true_label)} | total ec: {len(all_label)} \n'
             f'>>> precision: {pre:.3} | recall: {rec:.3}'
             f'| F1: {f1:.3} | AUC: {roc:.3} ')
+        print(f'>>> label: {(all_label)} \n'
+            f'>>> precision: {_pre}\n'
+              f'>>> recall: {_rec}\n'
+            f'>>> F1: {_f1}\n'
+              f'>>> AUC: {_roc}')
         print('-' * 75)
 
 
@@ -123,12 +130,19 @@ def infer_pvalue_supcon(train_data, test_data, p_value=1e-5, nk_random=20,
         true_label, all_label = get_true_labels('./data/' + test_data)
         pre, rec, f1, roc, acc = get_eval_metrics(
             pred_label, pred_probs, true_label, all_label)
+        _pre, _rec, _f1, _roc, _acc = get_eval_metrics_not_weighted(
+            pred_label, pred_probs, true_label, all_label)
         print(f'############ EC calling results using random '
               f'chosen {nk_random}k samples ############')
         print('-' * 75)
         print(f'>>> total samples: {len(true_label)} | total ec: {len(all_label)} \n'
-              f'>>> precision: {pre:.3} | recall: {rec:.3}'
-              f'| F1: {f1:.3} | AUC: {roc:.3} ')
+            f'>>> precision: {pre:.3} | recall: {rec:.3}'
+            f'| F1: {f1:.3} | AUC: {roc:.3} ')
+        print(f'>>> label: {(all_label)} \n'
+            f'>>> precision: {_pre}\n'
+              f'>>> recall: {_rec}\n'
+            f'>>> F1: {_f1}\n'
+              f'>>> AUC: {_roc}')
         print('-' * 75)
 
 def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
@@ -240,9 +254,16 @@ def infer_maxsep_supcon(train_data, test_data, report_metrics=False,
         true_label, all_label = get_true_labels('./data/' + test_data)
         pre, rec, f1, roc, acc = get_eval_metrics(
             pred_label, pred_probs, true_label, all_label)
+        _pre, _rec, _f1, _roc, _acc = get_eval_metrics_not_weighted(
+            pred_label, pred_probs, true_label, all_label)
         print("############ EC calling results using maximum separation ############")
         print('-' * 75)
         print(f'>>> total samples: {len(true_label)} | total ec: {len(all_label)} \n'
-              f'>>> precision: {pre:.3} | recall: {rec:.3}'
-              f'| F1: {f1:.3} | AUC: {roc:.3} ')
+            f'>>> precision: {pre:.3} | recall: {rec:.3}'
+            f'| F1: {f1:.3} | AUC: {roc:.3} ')
+        print(f'>>> label: {(all_label)} \n'
+            f'>>> precision: {_pre}\n'
+              f'>>> recall: {_rec}\n'
+            f'>>> F1: {_f1}\n'
+              f'>>> AUC: {_roc}')
         print('-' * 75)
