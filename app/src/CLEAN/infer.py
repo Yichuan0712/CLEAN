@@ -76,6 +76,9 @@ def infer_pvalue_triplet(train_data, test_data, p_value = 1e-5, nk_random = 20,
             f'>>> F1: {_f1}\n'
               f'>>> AUC: {_roc}')
         print('-' * 75)
+        labels_list = sorted(list(all_label))
+        label_score_dict = dict(zip(labels_list, _f1))
+        return label_score_dict
 
 
 def infer_pvalue_supcon(train_data, test_data, p_value=1e-5, nk_random=20,
@@ -144,6 +147,9 @@ def infer_pvalue_supcon(train_data, test_data, p_value=1e-5, nk_random=20,
             f'>>> F1: {_f1}\n'
               f'>>> AUC: {_roc}')
         print('-' * 75)
+        labels_list = sorted(list(all_label))
+        label_score_dict = dict(zip(labels_list, _f1))
+        return label_score_dict
 
 def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
                  pretrained=True, model_name=None, gmm = None):
@@ -205,6 +211,9 @@ def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
             f'>>> F1: {_f1}\n'
               f'>>> AUC: {_roc}')
         print('-' * 75)
+        labels_list = sorted(list(all_label))
+        label_score_dict = dict(zip(labels_list, _f1))
+        return label_score_dict
 
 
 def infer_maxsep_supcon(train_data, test_data, report_metrics=False,
@@ -267,3 +276,6 @@ def infer_maxsep_supcon(train_data, test_data, report_metrics=False,
             f'>>> F1: {_f1}\n'
               f'>>> AUC: {_roc}')
         print('-' * 75)
+        labels_list = sorted(list(all_label))
+        label_score_dict = dict(zip(labels_list, _f1))
+        return label_score_dict
