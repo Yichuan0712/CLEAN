@@ -146,7 +146,7 @@ python
 
 >>> from CLEAN.utils import *
 
->>> ensure_dirs("data/esm_data_MU")
+>>> ensure_dirs("data/esm_data")
 
 >>> ensure_dirs("data/pretrained")
 
@@ -164,7 +164,7 @@ python
 
 >>> from CLEAN.utils import *
 
->>> ensure_dirs("data/esm_data_MU")
+>>> ensure_dirs("data/esm_data")
 
 >>> ensure_dirs("data/pretrained")
 
