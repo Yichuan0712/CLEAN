@@ -322,3 +322,28 @@ def get_eval_metrics(pred_label, pred_probs, true_label, all_label):
     roc = roc_auc_score(true_m, pred_m_auc, average='weighted')
     acc = accuracy_score(true_m, pred_m)
     return pre, rec, f1, roc, acc
+
+def get_eval_metrics_not_weighted(pred_label, pred_probs, true_label, all_label):
+    mlb = MultiLabelBinarizer()
+    mlb.fit([list(all_label)])
+    n_test = len(pred_label)
+    pred_m = np.zeros((n_test, len(mlb.classes_)))
+    true_m = np.zeros((n_test, len(mlb.classes_)))
+    # for including probability
+    pred_m_auc = np.zeros((n_test, len(mlb.classes_)))
+    label_pos_dict = get_ec_pos_dict(mlb, true_label, pred_label)
+    for i in range(n_test):
+        pred_m[i] = mlb.transform([pred_label[i]])
+        true_m[i] = mlb.transform([true_label[i]])
+         # fill in probabilities for prediction
+        labels, probs = pred_label[i], pred_probs[i]
+        for label, prob in zip(labels, probs):
+            if label in all_label:
+                pos = label_pos_dict[label]
+                pred_m_auc[i, pos] = prob
+    pre = precision_score(true_m, pred_m, average=None, zero_division=0)
+    rec = recall_score(true_m, pred_m, average=None)
+    f1 = f1_score(true_m, pred_m, average=None)
+    roc = roc_auc_score(true_m, pred_m_auc, average=None)
+    acc = accuracy_score(true_m, pred_m)
+    return pre, rec, f1, roc, acc
