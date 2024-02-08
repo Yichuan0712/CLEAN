@@ -61,7 +61,7 @@ def format_esm(a):
 
 
 def load_esm(lookup):
-    esm = format_esm(torch.load('./data/esm_data/' + lookup + '.pt'))
+    esm = format_esm(torch.load('./data/esm_data_MU/' + lookup + '.pt'))
     return esm.unsqueeze(0)
 
 
@@ -116,7 +116,7 @@ def ensure_dirs(path):
         
 def retrive_esm1b_embedding(fasta_name):
     esm_script = "esm/scripts/extract.py"
-    esm_out = "data/esm_data"
+    esm_out = "data/esm_data_MU"
     esm_type = "esm2_t6_8M_UR50D"  # "esm1b_t33_650M_UR50S"
     fasta_name = "data/" + fasta_name + ".fasta"
     command = ["python", esm_script, esm_type, 
@@ -179,7 +179,7 @@ def mutate_single_seq_ECs(train_file):
     single_id = set()
     for id in id_ec.keys():
         for ec in id_ec[id]:
-            if ec in single_ec and not os.path.exists('./data/esm_data/' + id + '_1.pt'):
+            if ec in single_ec and not os.path.exists('./data/esm_data_MU/' + id + '_1.pt'):
                 single_id.add(id)
                 break
     print("Number of EC numbers with only one sequences:",len(single_ec))
