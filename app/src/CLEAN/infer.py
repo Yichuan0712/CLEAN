@@ -186,8 +186,10 @@ def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
             f'>>> precision: {pre:.3} | recall: {rec:.3}'
             f'| F1: {f1:.3} | AUC: {roc:.3} ')
         print(f'>>> label: {(all_label)} \n'
-            f'>>> precision: {_pre} | recall: {_rec}'
-            f'| F1: {_f1} | AUC: {_roc} ')
+            f'>>> precision: {_pre}\n'
+              f'>>> recall: {_rec}\n'
+            f'>>> F1: {_f1}\n'
+              f'>>> AUC: {_roc}')
         print('-' * 75)
 
 
