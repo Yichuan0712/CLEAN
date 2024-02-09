@@ -77,7 +77,10 @@ def infer_pvalue_triplet(train_data, test_data, p_value = 1e-5, nk_random = 20,
               f'>>> AUC: {_roc}')
         print('-' * 75)
         labels_list = sorted(list(all_label))
+        labels_list = [label + ' F1' for label in labels_list]
         label_score_dict = dict(zip(labels_list, _f1))
+        weighted = {'Weighted Precision': pre, 'Weighted Recall': rec, 'Weighted F1': f1, 'Weighted AUC': roc}
+        label_score_dict.update(weighted)
         return label_score_dict
 
 
@@ -148,7 +151,10 @@ def infer_pvalue_supcon(train_data, test_data, p_value=1e-5, nk_random=20,
               f'>>> AUC: {_roc}')
         print('-' * 75)
         labels_list = sorted(list(all_label))
+        labels_list = [label + ' F1' for label in labels_list]
         label_score_dict = dict(zip(labels_list, _f1))
+        weighted = {'Weighted Precision': pre, 'Weighted Recall': rec, 'Weighted F1': f1, 'Weighted AUC': roc}
+        label_score_dict.update(weighted)
         return label_score_dict
 
 def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
@@ -212,7 +218,10 @@ def infer_maxsep_triplet(train_data, test_data, report_metrics = False,
               f'>>> AUC: {_roc}')
         print('-' * 75)
         labels_list = sorted(list(all_label))
+        labels_list = [label + ' F1' for label in labels_list]
         label_score_dict = dict(zip(labels_list, _f1))
+        weighted = {'Weighted Precision': pre, 'Weighted Recall': rec, 'Weighted F1': f1, 'Weighted AUC': roc}
+        label_score_dict.update(weighted)
         return label_score_dict
 
 
@@ -277,5 +286,8 @@ def infer_maxsep_supcon(train_data, test_data, report_metrics=False,
               f'>>> AUC: {_roc}')
         print('-' * 75)
         labels_list = sorted(list(all_label))
+        labels_list = [label + ' F1' for label in labels_list]
         label_score_dict = dict(zip(labels_list, _f1))
+        weighted = {'Weighted Precision': pre, 'Weighted Recall': rec, 'Weighted F1': f1, 'Weighted AUC': roc}
+        label_score_dict.update(weighted)
         return label_score_dict
