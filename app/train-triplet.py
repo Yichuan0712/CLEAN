@@ -19,7 +19,7 @@ def parse():
     parser.add_argument('-d', '--hidden_dim', type=int, default=512)
     parser.add_argument('-o', '--out_dim', type=int, default=128)
     parser.add_argument('--adaptive_rate', type=int, default=100)
-    parser.add_argument('--verbose', type=bool, default=False)
+    parser.add_argument('--verbose', type=bool, default=True)
     args = parser.parse_args()
     return args
 
