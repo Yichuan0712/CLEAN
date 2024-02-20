@@ -60,9 +60,14 @@ class Triplet_dataset_with_mine_EC(torch.utils.data.Dataset):
         self.ec_id = ec_id
         self.full_list = []
         self.mine_neg = mine_neg
-        for ec in ec_id.keys():
+        # for ec in ec_id.keys():
+        #     if '-' not in ec:
+        #         self.full_list.append(ec)
+        for ec, ids in self.ec_id.items():
             if '-' not in ec:
-                self.full_list.append(ec)
+                # 对于每个ec，根据它对应的id数量重复添加
+                for _ in range(len(ids)):
+                    self.full_list.append(ec)
 
     def __len__(self):
         return len(self.full_list)
@@ -87,9 +92,14 @@ class MultiPosNeg_dataset_with_mine_EC(torch.utils.data.Dataset):
         self.n_neg = n_neg
         self.full_list = []
         self.mine_neg = mine_neg
-        for ec in ec_id.keys():
+        # for ec in ec_id.keys():
+        #     if '-' not in ec:
+        #         self.full_list.append(ec)
+        for ec, ids in self.ec_id.items():
             if '-' not in ec:
-                self.full_list.append(ec)
+                # 对于每个ec，根据它对应的id数量重复添加
+                for _ in range(len(ids)):
+                    self.full_list.append(ec)
 
     def __len__(self):
         return len(self.full_list)
