@@ -117,7 +117,6 @@ def main():
             train_loader = get_dataloader(dist_map, id_ec, ec_id, args)
         # -------------------------------------------------------------------- #
         epoch_start_time = time.time()
-        print(train_loader.shape)
         train_loss = train(model, args, epoch, train_loader,
                            optimizer, device, dtype, criterion)
         # only save the current best model near the end of training
