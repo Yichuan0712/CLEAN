@@ -51,11 +51,12 @@ def get_dist_map(ec_id_dict, esm_emb, device, dtype, model=None, dot=False):
     between all possible pairs of EC cluster centers
     '''
     # inference all queries at once to get model embedding
-    if model is not None:
-        model_emb = model(esm_emb.to(device=device, dtype=dtype))
-    else:
-        # the first distance map before training comes from ESM
-        model_emb = esm_emb
+    # if model is not None:
+    #     model_emb = model(esm_emb.to(device=device, dtype=dtype))
+    # else:
+    #     # the first distance map before training comes from ESM
+    #     model_emb = esm_emb
+    model_emb = esm_emb
     # calculate cluster center by averaging all embeddings in one EC
     cluster_center_model = get_cluster_center(model_emb, ec_id_dict)
     # organize cluster centers in a matrix
