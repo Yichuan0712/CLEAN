@@ -52,8 +52,6 @@ def train(model, args, epoch, train_loader,
         model_emb = model(data.to(device=device, dtype=dtype))
         loss = criterion(model_emb, args.temp, args.n_pos)
         loss.backward()
-        print(data.shape)
-        exit(0)
         optimizer.step()
 
         total_loss += loss.item()
