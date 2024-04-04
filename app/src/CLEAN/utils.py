@@ -61,8 +61,8 @@ def format_esm(a):
 
 
 def load_esm(lookup):
-    esm = format_esm(torch.load('./data/esm_data/' + lookup + '.pt'))
-    # esm = format_esm(torch.load('./data/esm_data_MU/' + lookup + '.pt'))
+    # esm = format_esm(torch.load('./data/esm_data/' + lookup + '.pt'))
+    esm = format_esm(torch.load('./data/esm_data_MU/' + lookup + '.pt'))
     return esm.unsqueeze(0)
 
 
