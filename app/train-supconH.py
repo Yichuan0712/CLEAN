@@ -128,6 +128,15 @@ def main():
         print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | '
               f'training loss {train_loss:6.4f}')
         print('-' * 75)
+        # 打开或创建文件，设置为追加模式
+        with open('training_log.txt', 'a') as log_file:
+            # 写入分隔线
+            log_file.write('-' * 75 + '\n')
+            # 写入训练结果
+            log_file.write(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | '
+                           f'training loss {train_loss:6.4f}\n')
+            # 写入另一条分隔线
+            log_file.write('-' * 75 + '\n')
     # remove tmp save weights
     os.remove('./data/model/' + model_name + '.pth')
     os.remove('./data/model/' + model_name + '_' + str(epoch) + '.pth')
